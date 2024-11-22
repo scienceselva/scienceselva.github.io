@@ -1,0 +1,599 @@
+ /* General Reset */
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ /* Body Styling */
+ body {
+     font-family: 'Arial', sans-serif;
+     min-height: 100vh;
+     background-image: linear-gradient(to right top, #dadcde, #e1e4e5, #e9eceb, #f2f4f2, #fbfbf9);
+     color: #333;
+ }
+
+ @media (max-width: 768px) {
+     body {
+         font-size: 14px;
+         /* Adjust font size for smaller screens */
+         padding: 10px;
+         /* Add some padding for better readability */
+     }
+ }
+
+ p {
+     text-indent: 40px
+ }
+
+ hr {
+     color: #d1cfcf;
+ }
+
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     margin: 20px 0;
+     background-color: #ffffff;
+ }
+
+ th,
+ td {
+     padding: 20px;
+     text-align: left;
+     border: 1px solid #ccc;
+ }
+
+ th {
+     background-image: linear-gradient(to right top, #0f274a, #0c2345, #0a2040, #071c3c, #051937);
+     color: white;
+ }
+
+ tr:nth-child(even) {
+     background-color: #f9f9f9;
+ }
+
+ tr:hover {
+     background-color: #f1f1f1;
+ }
+
+ /* Responsive Table Design */
+ @media screen and (max-width: 768px) {
+     table {
+         border: 0;
+     }
+
+     thead {
+         display: none;
+     }
+
+     tr {
+         display: block;
+         margin-bottom: 10px;
+     }
+
+     td {
+         display: block;
+         text-align: left;
+         border: 0;
+         position: relative;
+         padding-left: 50%;
+     }
+
+     td::before {
+         content: attr(data-label);
+         position: absolute;
+         left: 15px;
+         width: 45%;
+         text-align: left;
+         font-weight: bold;
+     }
+ }
+
+ /* Menu Container */
+ .menu {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 300px;
+     height: 100%;
+     background-image: linear-gradient(to right top, #0f274a, #0c2345, #0a2040, #071c3c, #051937);
+     transform: translateX(-300px);
+     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+     z-index: 1000;
+     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);     
+ }
+
+ /* Burger Icon */
+ .burger {
+     position: fixed;
+     top: 20px;
+     left: 20px;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     width: 50px;
+     height: 50px;
+     background-image: linear-gradient(to left bottom, #214de7, #3553e4, #4358e2, #4e5edf, #5863dc);
+     border-radius: 50%;
+     align-items: center;
+     padding: 10px;
+     cursor: pointer;     
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+     z-index: 2000;
+ }
+
+ .burger span {
+     width: 30px;
+     height: 4px;
+     background: white;
+     border-radius: 2px;
+     transition: all 0.3s ease;
+ }
+
+
+ .menu-toggle:checked+.burger span:nth-child(1) {
+     transform: rotate(45deg) translate(6px, 6px);
+ }
+
+ .menu-toggle:checked+.burger span:nth-child(2) {
+     opacity: 0;
+ }
+
+ .menu-toggle:checked+.burger span:nth-child(3) {
+     transform: rotate(-45deg) translate(6px, -6px);
+ }
+
+ /* Menu Items */
+ .menu-items {
+     display: flex;
+     flex-direction: column;
+     padding: 100px 20px;
+ }
+
+ .menu-items a {
+     text-decoration: none;
+     color: white;
+     padding: 15px;
+     margin: 10px 0;
+     font-size: 20px;
+     font-weight: bold;
+     background: rgba(255, 255, 255, 0.2);
+     border-radius: 5px;
+     text-align: center;
+     transition: all 0.3s ease;
+ }
+
+ .menu-items a:hover {
+     background: white;
+     color: #000;
+     transform: scale(1.05);
+ }
+
+ /* Menu Toggle */
+ .menu-toggle {
+     display: none;
+ }
+
+ .menu-toggle:checked~.menu {
+     transform: translateX(0);
+ }
+
+ /* Content Styling */
+ .content {
+     flex: 1;
+     padding: 40px;
+     margin-left: 0;
+     transition: margin-left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+ }
+
+ @media (max-width: 768px) {
+     .content {
+         padding: 20px;
+         /* Reduce padding for smaller screens */
+     }
+ }
+
+ @media (max-width: 480px) {
+     .content {
+         padding: 15px;
+         /* Further reduce padding for very small screens */
+     }
+ }
+
+ .menu-toggle:checked~.content {
+     margin-left: 300px;
+ }
+
+ .content section {
+     margin-bottom: 40px;
+ }
+
+ .content h1,
+ .content h2 {
+     font-size: 36px;
+     color: #000;
+ }
+
+ .content p {
+     font-size: 18px;
+     line-height: 1.6;
+     color: #000;
+ }
+
+ /* Footer Styling */
+ footer {
+     text-align: center;
+     padding: 20px;
+     background-image: linear-gradient(to right top, #f2f3f4, #f1f2f4, #f0f1f3, #f0eff3, #f0eef2);
+     color: #000;
+ }
+
+ .social-icons a {
+     margin: 0 10px;
+     color: white;
+     text-decoration: none;
+     font-size: 24px;
+     transition: transform 0.3s;
+ }
+
+ .social-icons a:hover {
+     transform: scale(1.2);
+ }
+
+ /* Responsive Design */
+ @media (max-width: 768px) {
+     .menu {
+         width: 240px;
+     }
+
+     .menu-toggle:checked~.content {
+         margin-left: 240px;
+     }
+
+     .menu-items a {
+         font-size: 18px;
+     }
+ }
+
+ .carddetail {
+     padding: 30px;
+     margin: 10px;
+     border: 1px solid #ccc;
+     border-radius: 10px;
+     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+     background-color: #fff;
+     width: 100%;
+ }
+
+ @media (max-width: 768px) {
+     .carddetail {
+         padding: 20px;
+         /* Reduce padding on tablets */
+         margin: 8px;
+         /* Reduce margin for tighter spacing */
+         width: 95%;
+         /* Ensure the card doesn't take too much width on tablets */
+     }
+ }
+
+ @media (max-width: 480px) {
+     .carddetail {
+         padding: 15px;
+         /* Further reduce padding for very small screens */
+         margin: 5px;
+         /* Adjust margin for compact layout */
+         width: 90%;
+         /* Ensure the card fits comfortably on small screens */
+     }
+ }
+
+
+ .carddetail h2 {
+     margin-bottom: 10px;
+     color: #000;
+ }
+
+ /* skills */
+ .container {
+     position: relative;
+     width: 800px;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-around;
+     align-items: center;
+ }
+
+ .cloud {
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 180px;
+     height: 100px;
+     margin: 20px;
+     padding: 15px;
+     background: white;
+     color: #555;
+     font-size: 14px;
+     font-weight: bold;
+     text-align: center;
+     border-radius: 50px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     transition: transform 0.3s, box-shadow 0.3s;
+ }
+
+ .cloud:hover {
+     transform: scale(1.05);
+     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+ }
+
+ .cloud::before,
+ .cloud::after {
+     content: '';
+     position: absolute;
+     background: inherit;
+     border-radius: inherit;
+     z-index: -1;
+ }
+
+ .cloud::before {
+     width: 120px;
+     height: 80px;
+     top: -30px;
+     left: 20px;
+ }
+
+ .cloud::after {
+     width: 140px;
+     height: 90px;
+     bottom: -30px;
+     right: 20px;
+ }
+
+ .cloud.database {
+     background: linear-gradient(135deg, #b3e5fc, #81d4fa);
+     color: #0d47a1;
+ }
+
+ .cloud.microservices {
+     background: linear-gradient(135deg, #ffccbc, #ffab91);
+     color: #bf360c;
+ }
+
+ .cloud.ui {
+     background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+     color: #1b5e20;
+ }
+
+ .cloud.ux {
+     background: linear-gradient(135deg, #d1c4e9, #b39ddb);
+     color: #311b92;
+ }
+
+ .cloud.cloud-platform {
+     background: linear-gradient(135deg, #ffe0b2, #ffcc80);
+     color: #e65100;
+ }
+
+ .cloud.cicd {
+     background: linear-gradient(135deg, #ffecb3, #ffe082);
+     color: #f57f17;
+ }
+
+ .cloud.mainframe {
+     background: linear-gradient(135deg, #ef9a9a, #e57373);
+     color: #b71c1c;
+ }
+
+ .cloud.tools {
+     background: linear-gradient(135deg, #b2dfdb, #80cbc4);
+     color: #004d40;
+ }
+
+ .title {
+     position: absolute;
+     top: -60px;
+     left: 50%;
+     transform: translateX(-50%);
+     font-size: 24px;
+     font-weight: bold;
+     color: #333;
+     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+ }
+
+ /* referances or profile links */
+
+
+/* Container for Cards */
+.card-container {
+    display: flex;
+    gap: 40px; /* Larger gap between cards */
+}
+
+/* Card Styling */
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+    padding: 30px;
+    width: 350px; /* Larger width */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Title of Card */
+.card h2 {
+    color: #4f5b62; /* Soft grayish-blue */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* List inside Card */
+.card ul {
+    list-style-type: none;
+}
+
+/* List Items Styling */
+.card ul li {
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Links Styling */
+.card a {
+    text-decoration: none;
+    color: #0073e6;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-left: 12px;
+    transition: color 0.3s ease;
+}
+
+.card a:hover {
+    color: #005bb5;
+}
+
+/* Icon Styling */
+.card a i {
+    font-size: 1.3rem;
+    color: #0073e6;
+    transition: color 0.3s ease;
+}
+
+.card a:hover i {
+    color: #005bb5;
+}
+
+/* contact me */
+
+/* Contact Container */
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Contact Form Card */
+.contact-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Heading Styling */
+.contact-card h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* Label Styling */
+.contact-card label {
+    text-align: left;
+    display: block;
+    color: #555;
+    margin: 8px 0 5px;
+    font-size: 1rem;
+}
+
+/* Input and Textarea Styling */
+.contact-card input,
+.contact-card textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    color: #555;
+}
+
+.contact-card input:focus,
+.contact-card textarea:focus {
+    outline: none;
+    border-color: #6c5ce7; /* Soft blue when focused */
+}
+
+/* Button Styling */
+.contact-card button {
+    background-color: #6c5ce7; /* Soft blue color */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.contact-card button:hover {
+    background-color: #5a4ac7; /* Darker blue on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .contact-card {
+        padding: 20px;
+        width: 90%;
+    }
+}
+
+
+/* header */
+
+/* Sticky Header Styling */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: #3b4e8c; /* Deep blue background */    
+    padding: 15px ;
+    text-align: center;
+    z-index: 1000; /* Ensure it stays on top */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for definition */
+    border-radius: 15px;
+}
+
+.sticky-header h1 {
+    font-size: 1.5rem; /* Large, bold text */
+    letter-spacing: 2px; /* Spacing between letters for style */
+    font-weight: 300; /* Bold font weight */    
+    margin: 0;
+    color: #fff;
+}
+
+/* Main Content Styling */
+.main-content {
+    padding: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+.main-content section {
+    margin-bottom: 40px;
+}
+
+.main-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.main-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
